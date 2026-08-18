@@ -955,10 +955,10 @@ html {
                 url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
 }
 
-/* 3. Outer Container - REDUCED SIZE */
+/* 3. Outer Container - REDUCED SIZE, WIDENED FOR TWO-PERSON GRID */
 .about-us-container {
     width: 100%;
-    max-width: 750px; /* Reduced from 900px */
+    max-width: 900px; /* Widened from 750px to comfortably fit two cards side by side */
     margin: 120px auto 60px auto; 
     padding: 40px 30px; /* Reduced padding from 60px 50px */
     text-align: center;
@@ -1019,10 +1019,13 @@ html {
     color: #ffd84d; 
 }
 
-/* 6. The "Hero" Card (Center Stage) */
+/* 6. The Team Cards Row (FIXED: was built for one card only) */
 .team-grid {
     display: flex;
+    flex-wrap: wrap;          /* Lets cards stack on narrow screens instead of overflowing */
     justify-content: center; 
+    align-items: stretch;     /* Both cards match height */
+    gap: 35px;                 /* THE FIX: real spacing between cards */
     margin-top: 30px;
 }
 
@@ -1030,10 +1033,13 @@ html {
     background: rgba(255, 255, 255, 0.95); 
     padding: 30px;
     border-radius: 15px;
-    max-width: 350px; /* Kept compact size */
+    flex: 1 1 320px;       /* Each card grows/shrinks but starts around 320px */
+    max-width: 350px;      /* Kept compact size */
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     border-top: 6px solid #ffd84d; 
     transition: transform 0.4s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .team-member-card:hover {
@@ -1086,6 +1092,13 @@ html {
     }
     .about-title {
         font-size: 2.2rem;
+    }
+    .team-grid {
+        gap: 25px; /* Slightly tighter gap on mobile */
+    }
+    .team-member-card {
+        flex: 1 1 100%; /* Full width, stacks vertically on small screens */
+        max-width: 400px;
     }
 }
 
@@ -1280,3 +1293,4 @@ html {
                 padding: 0 10px;
             }
         }
+        
